@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.1'
+}
+
+/* apply plugin: 'project-report' */
+
+sourceCompatibility = '11'
+mainClassName = 'tconsole.TheApp'
+jar.enabled = false
+distZip.enabled = false
+distTar.enabled = false
+shadowDistZip.enabled = false
+shadowDistTar.enabled = false
+version = '0.9.0'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'ch.bildspur:artnet4j:0.6.2'
+    implementation 'com.jtattoo:JTattoo:1.6.13'
+    implementation 'org.json:json:20250107'
+    implementation 'javazoom:jlayer:1.0.1'
+}
+
+shadowJar {
+   archiveBaseName.set('tconsole')
+   archiveClassifier.set('')
+}
+
+startScripts {
+    dependsOn(shadowJar)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += "-Xlint:deprecation"
+}
+
+

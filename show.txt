@@ -1,0 +1,55 @@
+#
+# Example show.txt file, file is read every time the cue window
+# is opened in the application. Comments start with a '#' character
+# empty lines are ignored except after the CUE statement. Leading
+# and trailing whitespace is ignored as well
+#
+# CUE <cue title>
+# MARKER <1..4>
+# SCENE <button numer> <UP|DOWN> [fade time (secs)]
+# DELAY <delay time (secs)>
+# PLAY <audio file number>
+# STOP
+# VOLUME <audio volume (%)>
+#
+#
+#
+
+        # a marker at the beginning of the show may be helpful
+MARKER  1
+
+        # defines a cue
+CUE     The cue title, displayed bold/green
+        A description, e.q. what happens on stage directly
+        before the cue shall be started. mist follow directly
+        the title line, an empty line marks the end of the
+        description
+
+        SCENE 4 UP 1.2     # fades in scene 4 with 1.2 secs
+        VOLUME 66          # sets the audio volume to 66%
+        PLAY 2             # starts audio file 02.mp3
+        DELAY 5.0          # waits 5 seconds
+        SCENE 4 DOWN 3.0   # fades out scene 4 with 3.0 secs
+
+CUE     Another cue
+        with a one line description
+        
+        SCENE 1 UP         # fades in scenes 1, 2 and 3
+        SCENE 2 UP         # with the fade in time set in the UI
+        SCENE 3 UP
+
+CUE     The third cue      # without description
+        
+        SCENE 1 DOWN       # fades out scene 1
+
+CUE     Black              # the end of the play
+
+        BLACK              # BLACK switches off all lights immediately
+
+CUE     Applause           # bringd up the light again
+
+        SCENE 1 UP
+        SCENE 2 UP
+        SCENE 3 UP
+
+

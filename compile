@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# compile the tconsole software
+#
+
+# do this in the dir where this scrip resides
+projectdir=$(dirname $0)
+cd $projectdir
+
+# get the version from the build.gradle file
+vstring=$(grep "version =" build.gradle)
+vstring=$(echo "$vstring" | tr "\'" "\"")
+vdate=$(date +%Y-%m-%d)
+
+# write a Version.java file
+echo "package tconsole;
+class Version {
+    static final String $vstring;
+    static final String date = \"$vdate\";
+}
+" >./src/main/java/tconsole/Version.java
+
+# build the software
+./gradlew --warning-mode=none build

@@ -1,0 +1,4 @@
+#!/bin/bash
+cp build/libs/tconsole-1.0.0.jar ~/Documents/Projekte/2025-04-00-Rheingschmeckt-Wald/TC24/tconsole.jar
+
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# do this in the dir where this scrip resides
+projectdir=$(dirname $0)
+cd $projectdir
+
+# get the version from the build.gradle file
+VERSION=$(grep "version =" build.gradle)
+VERSION=${VERSION:11:5}
+
+java -jar build/libs/tconsole-${VERSION}.jar
+
